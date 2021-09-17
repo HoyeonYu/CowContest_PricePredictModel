@@ -49,4 +49,20 @@ def flow1():
     concatWeightDF.to_csv(saveWeightDataPath + 'flow1.csv', encoding='cp949')
 
 
+# Flow 2, Filtering Meat Grade
+def flow2():
+    weightDF = pd.read_csv(saveWeightDataPath + 'flow1.csv', sep=',', encoding='CP949')
+    weightDF = weightDF[['도축년월', '육질등급', '평균도체중량', '도축두수']]
+    not1stGrade = weightDF[weightDF['육질등급'].str[:1] != '1'].index
+
+    originalLen = len(weightDF)
+    dropLen = len(not1stGrade)
+
+    weightDF = weightDF.drop(not1stGrade)
+    print('* FLOW 2: Filtering Meat Grade *  %d/%d Dropped' % (dropLen, originalLen))
+
+    weightDF.to_csv(saveWeightDataPath + 'flow2.csv', encoding='cp949')
+
+
 flow1()
+flow2()
