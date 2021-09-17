@@ -4,7 +4,7 @@
 # 소의 종류 : 한우
 # 육질 등급 : 1등급 이상 (1등급, 1+등급, 1++등급)
 # 기간 : 201501 ~ 201912
-# 목표 : 해당 기간 내 1등급 이상의 한우 일간 도체 평균 구하기
+# 목표 : 해당 기간 내 1등급 이상의 한우 월간 평균 도체 중량 구하기
 #
 # Column
 # 날짜, 도체평균
@@ -13,10 +13,7 @@
 # 1. 소의 종류 '한우' 이외 제거하기 (육우, 젖소)
 # 2. 육질 등급 '1등급' 미만 제거하기
 # 3. 평균 도체 중량 X 도축 두수 곱해 전체 도체 중량 구하기 (도축 두수는 그대로 유지)
-# 4. 도축년월 같은 것끼리 전체 도체 중량 합하기
-# 5. 도축 두수대로 나눠 평균 도체 중량 구하기
-# 6. 월간을 일간으로 적용
-# 7. 날짜, 도체평균만 남기고 나머지 열 제거하기
+# 4. 도축년월 같은 것끼리 평균 도체 중량 구하기
 
 import os
 
@@ -75,6 +72,23 @@ def flow3():
     weightDF.to_csv(saveWeightDataPath + 'flow3.csv', encoding='cp949')
 
 
+# Flow 4, Get Average Weight in Same Month
+def flow4():
+    weightDF = pd.read_csv(saveWeightDataPath + 'flow3.csv', sep=',', encoding='CP949')
+    weightDF = weightDF[['도축년월', '총도체중량', '도축두수']]
+    weightDF = weightDF.sort_values(by='도축년월')
+
+    weightTotalDF = weightDF['총도체중량'].groupby([weightDF['도축년월']]).sum()
+    weightNumDF = weightDF['도축두수'].groupby([weightDF['도축년월']]).sum()
+    weightDF = weightTotalDF / weightNumDF
+    weightDF = pd.DataFrame(weightDF, columns=['평균도체중량'])
+
+    print('* FLOW 4: Get Average Weight in Same Month *')
+
+    weightDF.to_csv(saveWeightDataPath + 'flow4.csv', encoding='cp949')
+
+
 # flow1()
 # flow2()
-flow3()
+# flow3()
+flow4()
