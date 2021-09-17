@@ -15,31 +15,31 @@
 import os
 import pandas as pd
 
-findWeightDataPath = 'rawData/소출생_2015_2020/소출생_'
-saveWeightDataPath = 'preprocessedData/8_cowBirth/'
+findBirthDataPath = 'rawData/소출생_2015_2020/소출생_'
+saveBirthDataPath = 'preprocessedData/8_cowBirth/'
 
-if not os.path.exists(saveWeightDataPath):
-    os.makedirs(saveWeightDataPath)
+if not os.path.exists(saveBirthDataPath):
+    os.makedirs(saveBirthDataPath)
 
 
 # Flow 1, Filtering Cow Type
 def flow1():
-    concatWeightDF = pd.DataFrame(columns=['소의종류', '출생년월', '출생두수'])
+    concatBirthDF = pd.DataFrame(columns=['소의종류', '출생년월', '출생두수'])
 
-    for i in range(5):  # 2015, 2016, 2017, 2018, 2019 (5)
+    for i in range(5):  # 2015, 20`16, 2017, 2018, 2019 (5)
         year = 2015 + i
-        weightDF = pd.read_csv(findWeightDataPath + '%s.csv' % year, sep=',', encoding='CP949')
-        weightDF = weightDF[['소의종류', '출생년월', '출생두수']]
-        notHanwoo = weightDF[weightDF['소의종류'] != '한우'].index
+        birthDF = pd.read_csv(findBirthDataPath + '%s.csv' % year, sep=',', encoding='CP949')
+        birthDF = birthDF[['소의종류', '출생년월', '출생두수']]
+        notHanwoo = birthDF[birthDF['소의종류'] != '한우'].index
 
-        originalLen = len(weightDF)
+        originalLen = len(birthDF)
         dropLen = len(notHanwoo)
 
-        weightDF = weightDF.drop(notHanwoo)
-        concatWeightDF = pd.concat([concatWeightDF, weightDF])
+        birthDF = birthDF.drop(notHanwoo)
+        concatBirthDF = pd.concat([concatBirthDF, birthDF])
         print('* FLOW 1: Filtering Cow Type * %s %d/%d Dropped' % (year, dropLen, originalLen))
 
-    concatWeightDF.to_csv(saveWeightDataPath + 'flow1.csv', encoding='cp949')
+    concatBirthDF.to_csv(saveBirthDataPath + 'flow1.csv', encoding='cp949')
 
 
 flow1()
