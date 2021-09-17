@@ -33,7 +33,7 @@ def flow1():
 
     cleanCostDF['연도'], cleanCostDF['두당사육비'] = year, cost
 
-    print('* FLOW 1: Get Total Birth in Same Row *')
+    print('* FLOW 1: Get Average Breeding Cost in Same Year *')
 
     cleanCostDF.to_csv(saveCostDataPath + 'flow1.csv', encoding='cp949')
 
