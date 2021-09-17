@@ -42,4 +42,18 @@ def flow1():
     concatBirthDF.to_csv(saveBirthDataPath + 'flow1.csv', encoding='cp949')
 
 
-flow1()
+# Flow 2, Get Total Birth Number in Same Month
+def flow2():
+    birthDF = pd.read_csv(saveBirthDataPath + 'flow1.csv', sep=',', encoding='CP949')
+    birthDF = birthDF[['출생년월', '출생두수']]
+    birthDF = birthDF.sort_values(by='출생년월')
+    birthDF = birthDF['출생두수'].groupby([birthDF['출생년월']]).sum()
+    birthDF = pd.DataFrame(birthDF, columns=['출생두수'])
+
+    print('* FLOW 2: Get Total Birth in Same Row *')
+
+    birthDF.to_csv(saveBirthDataPath + 'flow2.csv', encoding='cp949')
+
+
+# flow1()
+flow2()
