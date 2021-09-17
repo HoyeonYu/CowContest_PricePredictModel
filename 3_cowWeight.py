@@ -64,5 +64,17 @@ def flow2():
     weightDF.to_csv(saveWeightDataPath + 'flow2.csv', encoding='cp949')
 
 
-flow1()
-flow2()
+# Flow 3, Get Total Weight in Same Row
+def flow3():
+    weightDF = pd.read_csv(saveWeightDataPath + 'flow2.csv', sep=',', encoding='CP949')
+    weightDF = weightDF[['도축년월', '평균도체중량', '도축두수']]
+    weightDF['총도체중량'] = weightDF['평균도체중량'] * weightDF['도축두수']
+
+    print('* FLOW 3: Get Total Weight in Same Row *')
+
+    weightDF.to_csv(saveWeightDataPath + 'flow3.csv', encoding='cp949')
+
+
+# flow1()
+# flow2()
+flow3()
