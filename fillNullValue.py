@@ -40,8 +40,6 @@ for rowIdx in range(len(missingDF)):
         if lastIdx > len(missingDF) - 1:
             lastIdx = firstIdx
 
-        print('firstIdx', firstIdx, 'lastIdx', lastIdx)
-
         prevFemaleVal = float(missingDF.iloc[firstIdx, [3]].item())
         nextFemaleVal = float(missingDF.iloc[lastIdx, [3]].item())
 
@@ -49,7 +47,7 @@ for rowIdx in range(len(missingDF)):
         nextMaleVal = float(missingDF.iloc[lastIdx, [4]].item())
 
         for idx, missingRow in enumerate(missingIdxList):
-            ratio = (idx + 2) / (len(missingIdxList) + 2)
+            ratio = (idx + 1) / (len(missingIdxList) + 1)
             missingDF.iloc[missingRow, 3] = (prevFemaleVal * (1 - ratio)) + (nextFemaleVal * ratio)
             missingDF.iloc[missingRow, 4] = (prevMaleVal * (1 - ratio)) + (nextMaleVal * ratio)
 
