@@ -30,7 +30,7 @@ def flow1():
     sentimentDF = sentimentDF.drop(notInPeriod)
     print('* FLOW 1: Get Consumer Sentiment Index in Same Month *')
 
-    sentimentDF.to_csv(saveSentimentDataPath + 'flow1.csv', encoding='cp949')
+    sentimentDF.to_csv(saveSentimentDataPath + 'flow1.csv', encoding='cp949', index=False)
 
 
 flow1()

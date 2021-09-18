@@ -35,7 +35,7 @@ def flow1():
 
     print('* FLOW 1: Get Average Breeding Cost in Same Year *')
 
-    cleanCostDF.to_csv(saveCostDataPath + 'flow1.csv', encoding='cp949')
+    cleanCostDF.to_csv(saveCostDataPath + 'flow1.csv', encoding='cp949', index=False)
 
 
 flow1()

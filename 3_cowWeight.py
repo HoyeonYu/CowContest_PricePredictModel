@@ -85,7 +85,7 @@ def flow4():
 
     print('* FLOW 4: Get Average Weight in Same Month *')
 
-    weightDF.to_csv(saveWeightDataPath + 'flow4.csv', encoding='cp949')
+    weightDF.to_csv(saveWeightDataPath + 'flow4.csv', encoding='cp949', index=False)
 
 
 # flow1()

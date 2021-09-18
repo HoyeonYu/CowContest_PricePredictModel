@@ -34,7 +34,7 @@ def flow1():
 
     print('* FLOW 1: Get Consumer Total Price Index in Same Month *')
 
-    cleanTotalPriceDF.to_csv(saveTotalDataPath + 'flow1.csv', encoding='cp949')
+    cleanTotalPriceDF.to_csv(saveTotalDataPath + 'flow1.csv', encoding='cp949', index=False)
 
 
 flow1()
