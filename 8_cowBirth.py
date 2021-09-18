@@ -52,7 +52,7 @@ def flow2():
 
     print('* FLOW 2: Get Total Birth in Same Row *')
 
-    birthDF.to_csv(saveBirthDataPath + 'flow2.csv', encoding='cp949', index=False)
+    birthDF.to_csv(saveBirthDataPath + 'flow2.csv', encoding='cp949')
 
 
 # flow1()
