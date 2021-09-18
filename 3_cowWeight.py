@@ -20,7 +20,7 @@ import os
 import pandas as pd
 
 findWeightDataPath = 'rawData/소도축_2015_2020/소도축_'
-saveWeightDataPath = 'preprocessedData/3_CowWeight/'
+saveWeightDataPath = 'preprocessedData/3_cowWeight/'
 
 if not os.path.exists(saveWeightDataPath):
     os.makedirs(saveWeightDataPath)
