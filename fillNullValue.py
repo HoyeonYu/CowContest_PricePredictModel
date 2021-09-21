@@ -9,9 +9,10 @@ import os
 
 import numpy as np
 import pandas as pd
+import math
 
-dataPath = 'preprocessedFinal.csv'
-savePath = 'preprocessedFinal_FillNull.csv'
+dataPath = 'preprocessed_2020.CSV'
+savePath = 'preprocessed_FillNull_2020.csv'
 missingDF = pd.read_csv(dataPath, sep=',', encoding='CP949')
 
 missingIdxList = []
@@ -20,7 +21,7 @@ isInterpolate = False
 for rowIdx in range(len(missingDF)):
     print(missingDF.iloc[rowIdx, [3]].item(), missingDF.iloc[rowIdx, [4]].item())
 
-    if missingDF.iloc[rowIdx, [3]].item() == '-':
+    if math.isnan(float(missingDF.iloc[rowIdx, [3]].item())):
         missingIdxList.append(rowIdx)
         isInterpolate = False
 
