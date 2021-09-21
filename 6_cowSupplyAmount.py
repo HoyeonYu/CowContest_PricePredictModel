@@ -21,8 +21,8 @@ if not os.path.exists(saveSupplyPath):
 
 # Flow 1, Save Supply Amount in CSV File
 def flow1():
-    year = [2015, 2016, 2017, 2018, 2019, 2020]
-    supply = [267, 231, 239, 236, 245, 249]
+    year = [2015, 2016, 2017, 2018, 2019]
+    supply = [267, 231, 239, 236, 245]
 
     supplyDF = pd.DataFrame(columns=['연도', '생산량'])
     supplyDF['연도'], supplyDF['생산량'] = year, supply
