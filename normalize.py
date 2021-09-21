@@ -11,9 +11,9 @@ import os
 import numpy as np
 import pandas as pd
 
-dataPath = 'preprocessedFinal_FillNull.csv'
-saveNormDistriPath = 'preprocessedFinal_Normalized_NormalDistribution.csv'
-saveMinMaxPath = 'preprocessedFinal_Normalized_MinMax.csv'
+dataPath = 'preprocessed_FillNull.csv'
+saveNormDistriPath = 'preprocessed_Normalized_NormalDistribution.csv'
+saveMinMaxPath = 'preprocessed_Normalized_MinMax.csv'
 dataDF = pd.read_csv(dataPath, sep=',', encoding='CP949')
 
 # Flow 1, Normalize by using Normal Distribution
