@@ -1,7 +1,7 @@
 # Target
-# 종속변수 1번 쇠고기 생산량
+# 독립변수 6번(* 종속변수 1번에서 수정) 쇠고기 생산량
 # Data Source : KREI 한육우 수급 동향과 전망
-# 기간 : 2016 ~ 2020
+# 기간 : 2015 ~ 2020
 # 목표 : 생산량 저장
 #
 # Column
@@ -21,8 +21,8 @@ if not os.path.exists(saveSupplyPath):
 
 # Flow 1, Save Supply Amount in CSV File
 def flow1():
-    year = [2016, 2017, 2018, 2019, 2020]
-    supply = [231, 239, 236, 245, 249]
+    year = [2015, 2016, 2017, 2018, 2019, 2020]
+    supply = [267, 231, 239, 236, 245, 249]
 
     supplyDF = pd.DataFrame(columns=['연도', '생산량'])
     supplyDF['연도'], supplyDF['생산량'] = year, supply
